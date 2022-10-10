@@ -1,0 +1,76 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+$ge-blue-pallet:(
+  50:#ffffff,
+  100:#dbe2e9,
+  200:#333f48,
+  300:#59cbe8,
+  500:#005eb8,
+  700:#002e5d,
+  800:#0c2340,
+  contrast:(
+    200:rgba(black,.87),
+    500:white,
+    700:white
+  )
+);
+
+$ge-blue-accent:(
+  50:#fe5000,
+  100:#fe6e0b,
+  200:#ff8c16,
+  300:#FFA921,
+  500:#ffc72e,
+  700:#AAC442,
+  800:#55C259,
+  900: #00BF6F,
+  contrast:(
+    200:white,
+    500:white,
+    700:white
+  )
+);
+
+
+
+$job_tracking_ui-primary: mat.define-palette(mat.$indigo-palette);
+$job_tracking_ui-accent: mat.define-palette($ge-blue-accent, 50, 500, 900);
+
+// The warn palette is optional (defaults to red).
+$job_tracking_ui-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+// Define a dark theme
+$dark-primary: mat.define-palette($ge-blue-pallet);
+$dark-accent: mat.define-palette($job_tracking_ui-accent);
+$dark-theme: mat.define-dark-theme((
+ color: (
+   primary: $dark-primary,
+   accent: $dark-accent,
+ )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($dark-theme);
+@include mat.all-component-colors($dark-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

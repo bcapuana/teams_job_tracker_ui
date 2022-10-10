@@ -1,0 +1,12 @@
+<mat-card class="container" *ngIf="Task" [class.mat-elevation-z8]="true" style="margin:10px;">
+    <mat-card-title>
+        <span>
+            {{Task.Name}}
+        </span>
+        <span *ngFor="let item of Task.Assignees" style="float:right">{{item}}</span>
+    </mat-card-title>
+    <mat-divider inset></mat-divider>
+    <mat-card-content>
+        <p>{{Task.Description}}</p>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,16 @@
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<mat-card class="kanban-col" *ngIf="model">
+  <mat-card-title>
+    {{model.title}}
+  </mat-card-title>
+  <mat-card-content class="kanban-card-content">
+    <button mat-raised-button color="primary" style="width: 100%; margin-bottom:10px;" (click)="addTask()">
+      <span class="material-symbols-outlined" style="margin-right: 10px; vertical-align: middle;">
+        add
+      </span><span style="vertical-align: middle;">Add Task</span></button>
+    <mat-list cdkDropList [cdkDropListData]="model.tasks" (cdkDropListDropped)="drop($event)" class="kanban-list">
+      <app-task *ngFor="let item of model.tasks" cdkDrag [Task]="item"></app-task>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,6 @@
+<div style="height: 100%;" *ngIf="model" >
+    <mat-toolbar color="primary">{{model.title}}</mat-toolbar>
+    <div cdkDropListGroup flexLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="20px" fxFlexFill style="padding:20px">
+        <app-kanban-column *ngFor="let column of model.columns" [model]="column"></app-kanban-column>
+    </div>
+</div>

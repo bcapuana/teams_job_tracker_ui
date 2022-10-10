@@ -1,0 +1,64 @@
+<div *ngIf="model">
+    <div [style.display]="model.isNew? 'none': 'block'">
+        <h1 mat-dialog-title>{{model.Name}}</h1>
+    </div>
+    <div [style.display]="!model.isNew? 'none': 'block'">
+        <h1 mat-dialog-title>Create a new Task</h1>
+    </div>
+    <table>
+        
+        <tr>
+            <td colspan="5">
+                <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input matInput type="text" [(ngModel)]="model.Name">
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <mat-form-field>
+                    <mat-label>Description</mat-label>
+                    <textarea matInput [(ngModel)]="model.Description"></textarea>
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field>
+                    <mat-label>Bucket</mat-label>
+                    <input matInput type="list">
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <mat-label>Progress</mat-label>
+                    <input matInput type="list">
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <mat-label>Priority</mat-label>
+                    <input matInput type="list">
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field>
+                    <mat-label>Start Date</mat-label>
+                    <input matInput type="date" placeholder="Start Anytime">
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <mat-label>Due Date</mat-label>
+                    <input matInput type="date">
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <button mat-raised-button color="primary" [mat-dialog-close]="model" cdkFocusInitial>Ok</button>
+    </div>
+</div>
